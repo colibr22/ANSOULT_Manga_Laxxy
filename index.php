@@ -18,7 +18,7 @@ require "pdo.php";
             $stmt->execute();
             $mangas = $stmt->fetchAll(PDO::FETCH_ASSOC);
             foreach ($mangas as $manga) {
-                echo "<li>" . htmlspecialchars($manga['titre']) . "<br> " . htmlspecialchars($manga['annee_publication']) . "  " . "</li>";
+                echo "<li>" . "<a href >" . htmlspecialchars($manga['titre']) . "</a>" . "<br> " . htmlspecialchars($manga['annee_publication']) . "  " . "</li>";
             }
         ?>
     </ul>
