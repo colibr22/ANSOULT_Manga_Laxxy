@@ -1,5 +1,5 @@
 <?php
-require "pdo.php"
+require "pdo.php";
 ?>
 
 <!DOCTYPE html>
@@ -11,6 +11,17 @@ require "pdo.php"
 </head>
 <body>
     <h1>Top manga :</h1>
+    <ul>
+        <?php
+            $sql = "SELECT titre, annee_publication FROM manga ORDER BY annee_publication";
+            $stmt = $dbPDO->prepare($sql);
+            $stmt->execute();
+            $mangas = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            foreach ($mangas as $manga) {
+                echo "<li>" . htmlspecialchars($manga['titre']) . "<br> " . htmlspecialchars($manga['annee_publication']) . "  " . "</li>";
+            }
+        ?>
+    </ul>
     
 </body>
 </html>
